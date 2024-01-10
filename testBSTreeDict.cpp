@@ -24,13 +24,15 @@ int main() {
 	dict.insert("e", 5);
 	std::cout << std::endl;
 
-        std::cout << "cout << dict: " << std::endl << dict << std::endl;
+        std::cout << "cout << dict: " << std::endl << dict << " ";
+		std::cout << std::endl;
 
 	std::cout << "dict.search('a'): " << dict.search("a") << std::endl;
 	std::cout << "dict['d']: " << dict["d"] << std::endl;
 	std::cout << "dict.remove('c'): " << dict.remove("c") << std::endl;
 	std::cout << std::endl; 
-	std::cout << std::endl << dict << std::endl;
+	std::cout << std::endl << std::endl << dict << " ";
+	std::cout << std::endl;
         try {
 		dict.insert("a", 44);
 		std::cout << "ERROR! dict.insert('a') did not throw std::runtime_error... :(" << std::endl;

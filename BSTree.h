@@ -76,6 +76,7 @@ class BSTree{
 				n->right = remove_max(n->right);
 			else
 				return n->left;
+			return n;
 		}
 		
 		void print_inorden(ostream &out, BSNode<T> *n) const{
