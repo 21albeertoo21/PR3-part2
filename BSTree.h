@@ -14,7 +14,7 @@ class BSTree{
 		BSNode<T> *root; //Nodo raiz del árbol
 		
 		BSNode<T>* search(BSNode<T> *n, T e) const{
-			if(n == nullptr)
+			if(n == nullptr) //llega al final del árbol sin encontrar el valor
 				throw runtime_error("Value not found in tree\n");
 			else if(n->elem == e)
 				return n;
@@ -27,7 +27,7 @@ class BSTree{
 		}
 		
 		BSNode<T>* insert(BSNode<T> *n, T e){
-			if(n == nullptr)
+			if(n == nullptr) //llega al final para introducir el nuevo nodo
 				return new BSNode<T>(e);
 			else if(n->elem == e)
 				throw runtime_error("Duplicated value\n");
