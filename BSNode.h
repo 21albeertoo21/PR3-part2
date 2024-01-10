@@ -8,18 +8,19 @@ using namespace std;
 template <typename T>
 class BSNode{
 	public:
-		T elem
+		T elem;
 		BSNode<T> *left;
 		BSNode<T> *right; //valores > a *left
 		
-		BSNode(T elem, BSNode<T> *left, BSNode<T> *right){
+		BSNode(T elem, BSNode<T>* left = nullptr, BSNode<T>* right = nullptr){
 			this->elem = elem;
-			this->left = nullptr;
-			this->right = nullptr;
+			this->left = left;
+			this->right = right;
+			
 		}
 		
 		friend ostream& operator<<(ostream &out, const BSNode<T> &bsn){
-			out << bsn.elem << endl;
+			out << bsn.elem << "\n";
 			return out;
 		}
 };

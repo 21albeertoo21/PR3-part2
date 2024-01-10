@@ -5,6 +5,8 @@
 #include <stdexcept>
 #include "BSNode.h"
 
+using namespace std;
+
 template <typename T>
 class BSTree{
 	private:
@@ -12,28 +14,26 @@ class BSTree{
 		BSNode<T> *root; //Nodo raiz del árbol
 		
 		BSNode<T>* search(BSNode<T> *n, T e) const{
-			BSNode<T> *result;
 			if(n == nullptr)
 				throw runtime_error("Value not found in tree\n");
 			else if(n->elem == e)
-				result = n;
+				return n;
 			else if(n->elem > e)
-				result = search(n->left, e);
+				n = search(n->left, e);
 			else if(n->elem < e)
-				result = search(n->right, e);
+				n = search(n->right, e);
 			
-			return result;
+			return n;
 		}
 		
 		BSNode<T>* insert(BSNode<T> *n, T e){
 			if(n == nullptr)
 				return new BSNode<T>(e);
-			
-			if(n->elem == e)
+			else if(n->elem == e)
 				throw runtime_error("Duplicated value\n");
 			else if(n->elem > e)
 				n->left = insert(n->left, e);
-			else if(n->elem < e)
+			else
 				n->right = insert(n->right, e);
 			
 			return n;
@@ -76,7 +76,6 @@ class BSTree{
 				n->right = remove_max(n->right);
 			else
 				return n->left;
-		
 		}
 		
 		void print_inorden(ostream &out, BSNode<T> *n) const{
@@ -89,20 +88,20 @@ class BSTree{
 		
 		void delete_cascade(BSNode<T>* n){
 			if(n != nullptr){
-				delete_cascade(n->right);
 				delete_cascade(n->left);
+				delete_cascade(n->right);
 				delete n;
 			}
-		
 		}
 	
 	public:
 		BSTree(){
+			nelem = 0;
+			root = nullptr;
 		};
 		
 		~BSTree(){
-			BSNode<T> *aux = root;
-			delete_cascade(aux);
+			delete_cascade(root);
 		}
 		
 		int size()const {
@@ -110,34 +109,25 @@ class BSTree{
 		}
 		
 		void insert(T e){
-			BSNode<T> *aux = root;
-			aux = insert(aux, e);
+			root = insert(root, e);
 			nelem++;
 		}
 		
 		T search(T e) const {
-			BSNode<T> *aux = root;
-			return search(aux, e)->elem;
+			return search(root, e)->elem;
 		}
 		
 		T operator[](T e) const{
-			BSNode<T> *aux = root;
-			aux = search(aux, e);
-			T dato = aux->elem;
-			return dato;
+			return search(e);
 		}
 		
 		friend ostream& operator<<(ostream &out, const BSTree<T> &bst){
-			BSNode<T> *aux = bst.root;
-			bst.print_inorden(out, aux);
-			out << endl;
-			
+			bst.print_inorden(out, bst.root);
 			return out;
 		}
 		
 		void remove(T e){
-			BSNode<T> *aux = root;
-			remove(aux, e);	
+			remove(root, e);
 			nelem--;
 		}
 };

@@ -8,16 +8,17 @@ int main()
     std::cout << std::endl; 
 
     std::cout << "bstree.size(): " << bstree.size() << std::endl;
-    std::cout << "cout << bstree: " << std::endl << bstree << std::endl;
+    std::cout << "cout << bstree: " << bstree << std::endl;
     std::cout << std::endl; 
     
     std::cout << "bstree.insert(15)" << std::endl;
     std::cout << "-----------------" << std::endl;
     bstree.insert(15);
     std::cout << "bstree.size(): " << bstree.size() << std::endl;
+    std::cout << "cout << bstree: " << bstree << std::endl;
     std::cout << "bstree.search(15): ";
                       std::cout << bstree.search(15) << std::endl;
-    std::cout << "cout << bstree: " << std::endl << bstree << std::endl;
+    std::cout << "cout << bstree: " << bstree << std::endl;
     std::cout << std::endl; 
 
     std::cout << "bstree.insert(7)" << std::endl;
@@ -26,7 +27,7 @@ int main()
     std::cout << "bstree.size(): " << bstree.size() << std::endl;
     std::cout << "bstree.search(7): ";
                       std::cout << bstree.search(7) << std::endl;
-    std::cout << "cout << bstree: " << std::endl << bstree << std::endl;
+    std::cout << "cout << bstree: " << bstree << std::endl;
     std::cout << std::endl; 
 
     std::cout << "bstree.insert(3)" << std::endl;
@@ -62,7 +63,7 @@ int main()
     std::cout << "bstree.size(): " << bstree.size() << std::endl;
     std::cout << "bstree.search(18): ";
                       std::cout << bstree.search(18) << std::endl;
-    std::cout << "cout << bstree: " << std::endl << bstree << std::endl;
+    std::cout << "cout << bstree: " << bstree << std::endl;
     std::cout << std::endl; 
 
     std::cout << "bstree.insert(21)" << std::endl;
